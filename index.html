@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Stealth ChatGPT</title>
+</head>
+<body>
+  <h1>Stealth Mode</h1>
+  <button id="toggleBtn">Toggle Stealth Mode</button>
+
+  <script>
+    document.getElementById("toggleBtn").addEventListener("click", () => {
+      window.electronAPI.toggleStealth();
+    });
+  </script>
+</body>
+</html>

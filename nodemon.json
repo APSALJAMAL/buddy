@@ -1,0 +1,6 @@
+{
+    "watch": ["main.js", "preload.js", "index.html"],
+    "ext": "js,html",
+    "exec": "node start.js"
+  }
+  
