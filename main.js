@@ -11,14 +11,19 @@ let tray = null;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 600,
-    height: 700,
-    frame: false, // no default OS frame
+    width: 500,
+    height: 500,
+    minWidth: 500,
+    minHeight: 500,
+    maxWidth: 500,
+    maxHeight: 500,
+    frame: false,
     transparent: false,
-    resizable: true,
-    movable: true, // allow moving the window
+    resizable: false, // 🚫 disable resizing
+    movable: true,
     focusable: true,
     skipTaskbar: false,
+    fullscreenable: false, // 🚫 disable fullscreen
     autoHideMenuBar: true,
     hasShadow: true,
     webPreferences: {
@@ -117,9 +122,8 @@ function updateIndicator() {
       ind.style.background = "${isStealth ? "green" : "red"}";
       ind.innerText = "${isStealth ? "STEALTH ON" : "STEALTH OFF"}";
     })();
-  `, true); // <-- 'true' ensures it runs in isolated world
+  `, true);
 }
-
 
 function enableStealthMode() {
   mainWindow.setAlwaysOnTop(true, "screen-saver");
@@ -147,9 +151,8 @@ function toggleStealth() {
   } else {
     enableStealthMode();
   }
-  updateIndicator(); // ✅ Force live update after toggle
+  updateIndicator();
 }
-
 
 ipcMain.on("toggle-stealth", toggleStealth);
 
